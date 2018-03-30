@@ -4,7 +4,7 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.9.0"]]
-  :main ^:skip-aot nomis-three-tier-service-example-clj.core
+  :main ^:skip-aot nomis-three-tier-service-example-clj.system.main
   :repl-options {:init-ns user}
   :target-path "target/%s"
   :profiles {:dev {:source-paths ["dev"]

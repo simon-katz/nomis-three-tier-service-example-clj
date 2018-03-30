@@ -1,4 +1,4 @@
-(ns nomis-three-tier-service-example-clj.core
+(ns nomis-three-tier-service-example-clj.system.main
   (:gen-class))
 
 (defn -main
