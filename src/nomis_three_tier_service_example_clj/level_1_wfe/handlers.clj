@@ -9,18 +9,31 @@
 
 (defn make-routes []
   ["/"
-   [["hello-as-resource" (yada/as-resource "Hello World!")]
-    ["hello-as-handler" (yada/handler "Hello World!")]
-    ["an-edn-map-1" (yada/handler {:an :edn
-                                   :map {:hello "World!"}})]
-    ["an-edn-map-2" (yada/resource {:produces "application/edn"
-                                    :response {:an :edn
-                                               :map {:hello "World!"}}})]
-    ["a-json-map" (yada/resource {:produces "application/json"
-                                  :response {:a :json
-                                             :map {:hello "World!"}}})]
-    ["test" (yada/resource {:produces "text/plain"
-                            :response "This is a test!"})]
+   
+   [["hello-as-resource"
+     (yada/as-resource "Hello World!")]
+    
+    ["hello-as-handler"
+     (yada/handler "Hello World!")]
+
+    ["some-plain-text"
+     (yada/resource {:produces "text/plain"
+                     :response "Some plain text"})]
+    
+    ["an-edn-map-1"
+     (yada/handler {:an :edn
+                    :map {:hello "World!"}})]
+    
+    ["an-edn-map-2"
+     (yada/resource {:produces "application/edn"
+                     :response {:an :edn
+                                :map {:hello "World!"}}})]
+    
+    ["a-json-map"
+     (yada/resource {:produces "application/json"
+                     :response {:a :json
+                                :map {:hello "World!"}}})]
+    
     [true (yada/as-resource nil)]]])
 
 ;;;; TODO Set up some real handler tests.
