@@ -1,7 +1,5 @@
 (ns nomis-three-tier-service-example-clj.system.main-test
-  (:require [clojure.test :refer :all]
-            [nomis-three-tier-service-example-clj.system.main :refer :all]))
+  (:require [midje.sweet :refer :all]
+            [nomis-three-tier-service-example-clj.system.main :as sut]))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+(fact 1 => 1)
