@@ -3,7 +3,9 @@
   :url "https://github.com/simon-katz/nomis-three-tier-service-example-clj"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.9.0"]
+  :dependencies [[com.taoensso/timbre "4.10.0" :exclusions [io.aviso/pretty
+                                                            org.clojure/tools.reader]]
+                 [org.clojure/clojure "1.9.0"]
                  [bidi "2.1.3" :exclusions [ring/ring-core]]
                  [org.slf4j/slf4j-simple "1.7.25"]
                  [yada "1.2.11"]]
