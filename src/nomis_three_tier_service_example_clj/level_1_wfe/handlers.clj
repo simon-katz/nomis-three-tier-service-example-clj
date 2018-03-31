@@ -21,18 +21,18 @@
                      :response "Some plain text"})]
     
     ["an-edn-map-1"
-     (yada/handler {:an :edn
-                    :map {:hello "World!"}})]
+     (yada/handler {:this-will-be :an-edn
+                    :map          {:hello "World!"}})]
     
     ["an-edn-map-2"
      (yada/resource {:produces "application/edn"
-                     :response {:an :edn
-                                :map {:hello "World!"}}})]
+                     :response {:this-will-be :an-edn
+                                :map          {:hello "World!"}}})]
     
     ["a-json-map"
      (yada/resource {:produces "application/json"
-                     :response {:a :json
-                                :map {:hello "World!"}}})]
+                     :response {:this-will-be :a-json
+                                :map          {:hello "World!"}}})]
     
     [true (yada/as-resource nil)]]])
 
