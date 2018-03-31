@@ -10,7 +10,7 @@
   :repl-options {:init-ns user}
   :target-path "target/%s"
   :profiles {:dev {:source-paths ["dev"]
-                   :dependencies [[clj-http "3.8.0"]
+                   :dependencies [[clj-http "3.8.0" :exclusions [riddley]]
                                   [org.clojure/tools.namespace "0.2.11"]
                                   [midje "1.9.1" :exclusions [riddley]]]
                    :plugins [[lein-midje "3.2.1"]]}
