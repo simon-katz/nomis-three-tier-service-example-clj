@@ -1,5 +1,6 @@
 (ns user
-  (:require [clojure.java.javadoc :refer [javadoc]]
+  (:require [clj-http.client :as http-client]
+            [clojure.java.javadoc :refer [javadoc]]
             [clojure.pprint :refer [pp pprint]]
             [clojure.repl :refer :all ; [apropos dir doc find-doc pst source]
              ]
@@ -64,3 +65,32 @@
 
 ;;;; ___________________________________________________________________________
 ;;;; App-specific additional utilities for the REPL
+
+(defn select-keys-rec [m key-paths]
+  (apply merge
+         (for [p key-paths]
+           (let [n (count p)]
+             (case n
+               0 (throw (Error. "Empty path in key-paths"))
+               1 (select-keys m [(first p)])
+               (if-not (contains? m (first p))
+                 {}
+                 {(first p) (select-keys-rec (get m (first p))
+                                             (rest p))}))))))
+
+(defn filter-response [response]
+  (select-keys-rec response
+                   [[:headers ["Content-Type"]]
+                    [:body]])) 
+
+
+(map (fn [get-endpoint]
+       [:get-endpoint      get-endpoint
+        :filtered-response (-> (http-client/get get-endpoint)
+                               filter-response)])
+     ["http://localhost:3000/hello-as-resource" 
+      "http://localhost:3000/hello-as-handler" 
+      "http://localhost:3000/some-plain-text" 
+      "http://localhost:3000/an-edn-map-1" 
+      "http://localhost:3000/an-edn-map-2"
+      "http://localhost:3000/a-json-map"])
