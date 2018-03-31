@@ -5,6 +5,7 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [bidi "2.1.3" :exclusions [ring/ring-core]]
+                 [org.slf4j/slf4j-simple "1.7.25"]
                  [yada "1.2.11"]]
   :main ^:skip-aot nomis-three-tier-service-example-clj.system.main
   :repl-options {:init-ns user}
