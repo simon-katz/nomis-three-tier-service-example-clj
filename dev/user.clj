@@ -32,7 +32,7 @@
   []
   (alter-var-root #'the-system
                   (fn [_]
-                    (system/make-system @#'main/the-conventional-config))))
+                    (system/make-system @#'main/config))))
 
 (defn start
   "Starts the current development system."
