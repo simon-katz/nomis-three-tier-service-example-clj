@@ -3,8 +3,8 @@
             [nomis-three-tier-service-example-clj.level-1-wfe.server :as server]
             [taoensso.timbre :as timbre]))
 
-(defn make-system [conventional-config]
-  {})
+(defn make-system [config]
+  {:config config})
 
 (defn start [system]
   (assert (nil? (:server-map system)))
