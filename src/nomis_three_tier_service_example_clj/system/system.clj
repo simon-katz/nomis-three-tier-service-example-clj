@@ -7,15 +7,22 @@
   {:config config})
 
 (defn start [system]
+  (timbre/info "Starting system")
   (assert (nil? (:server-map system)))
-  (let [routes     (handlers/make-routes)
-        server-map (server/make-server routes)]
-    (timbre/info "Started system")
-    (assoc system :server-map server-map)))
+  (let [ctx        system
+        routes     (handlers/make-routes ctx)
+        ctx        (assoc ctx :routes routes)
+        server-map (server/make-server ctx)
+        ctx        (assoc ctx :server-map server-map)
+        ctx        (dissoc ctx :routes) ; because massive when printing
+        ]
+    ctx))
 
 (defn stop [system]
+  (timbre/info "Stopping system")
   (if (:server-map system)
     (do (server/stop (:server-map system))
-        (timbre/info "Stopped system")
-        (dissoc system :server-map))
+        (dissoc system
+                :server-map
+                :routes))
     system))

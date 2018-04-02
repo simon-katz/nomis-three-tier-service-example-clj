@@ -1,7 +1,7 @@
 (ns nomis-three-tier-service-example-clj.level-1-wfe.handlers
   (:require [yada.yada :as yada]))
 
-(defn make-routes []
+(defn make-routes [ctx]
   ["/"
    
    [["hello-as-resource"

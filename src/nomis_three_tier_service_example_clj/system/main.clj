@@ -3,13 +3,9 @@
             [taoensso.timbre :as timbre])
   (:gen-class))
 
-;;;; TODO Setup config.
-
-;;;; TODO Two things called config.
-;;;;      - Call the other `ctx`.
-
 (def ^:private config
-  {:this-would-be "stuff grabbed from config files and environment"})
+  {:this-would-be "stuff grabbed from config files and environment"
+   :port 3000})
 
 (defn -main
   [& args]
