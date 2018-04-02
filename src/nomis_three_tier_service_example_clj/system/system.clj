@@ -7,15 +7,13 @@
   {:config config})
 
 (defn start [system]
+  ;; TODO Use integrant.
   (timbre/info "Starting system")
   (assert (nil? (:server-map system)))
-  ;; TODO Use integrant.
-  (let [ctx        system
-        routes     (handlers/make-routes ctx)
-        ctx        (assoc ctx :routes routes)
-        server-map (server/make-server ctx)
-        ctx        (assoc ctx :server-map server-map)]
-    ctx))
+  (let [config     (:config system)
+        routes     (handlers/make-routes config)
+        server-map (server/make-server config routes)]
+    (assoc system :server-map server-map)))
 
 (defn stop [system]
   (timbre/info "Stopping system")
