@@ -9,13 +9,12 @@
 (defn start [system]
   (timbre/info "Starting system")
   (assert (nil? (:server-map system)))
+  ;; TODO Use integrant.
   (let [ctx        system
         routes     (handlers/make-routes ctx)
         ctx        (assoc ctx :routes routes)
         server-map (server/make-server ctx)
-        ctx        (assoc ctx :server-map server-map)
-        ctx        (dissoc ctx :routes) ; because massive when printing
-        ]
+        ctx        (assoc ctx :server-map server-map)]
     ctx))
 
 (defn stop [system]
