@@ -14,7 +14,7 @@
    :origin {:country (s/enum :FI :PO)
             :city s/Str}})
 
-(defn make-routes [config]
+(defn make-handler [config]
   (c/api
    {:swagger
     {:ui "/"

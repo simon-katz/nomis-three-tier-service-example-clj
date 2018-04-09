@@ -11,8 +11,8 @@
   (timbre/info "Starting system")
   (assert (nil? (:server-map system)))
   (let [config     (:config system)
-        routes     (handlers/make-routes config)
-        server-map (server/make-server config routes)]
+        handler    (handlers/make-handler config)
+        server-map (server/make-server config handler)]
     (assoc system :server-map server-map)))
 
 (defn stop [system]
@@ -21,6 +21,5 @@
     (let [config (:config system)]
       (server/stop config (:server-map system))
       (dissoc system
-              :server-map
-              :routes))
+              :server-map))
     system))
