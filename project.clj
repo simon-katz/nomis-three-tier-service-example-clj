@@ -5,8 +5,8 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[cheshire "5.8.0"]
                  [clj-http "3.8.0"]
-                 [metosin/compojure-api "1.1.11"]
                  [com.taoensso/timbre "4.10.0"]
+                 [metosin/compojure-api "1.1.11"]
                  [org.clojure/clojure "1.9.0"]
                  [ring "1.6.3"]]
   :main ^:skip-aot nomis-three-tier-service-example-clj.system.main

@@ -1,48 +1,30 @@
 (ns nomis-three-tier-service-example-clj.level-1-wfe.handlers
   (:require [compojure.api.sweet :as c]
-            [ring.util.http-response :as rur]
-            [schema.core :as s]))
+            [nomis-three-tier-service-example-clj.schemas.schemas :as schemas]
+            [ring.util.http-response :as rur]))
 
 ;;;; ___________________________________________________________________________
 
-;;;; Example building on compojure-api template stuff.
 
-(s/defschema Pizza
-  {:name s/Str
-   (s/optional-key :description) s/Str
-   :size (s/enum :L :M :S)
-   :origin {:country (s/enum :FI :PO)
-            :city s/Str}})
+;;;; TODO An example that gets similar info from two sources, and combines.
+;;;;      Can then do querying on the combined data.
+;;;;      Use fake services for the used services.
 
 (defn make-handler [config]
   (c/api
    {:swagger
     {:ui "/"
      :spec "/swagger.json"
-     :data {:info {:title "Compojure-api-play"
-                   :description "Compojure Api example"}
-            :tags [{:name "api", :description "some apis"}]}}}
+     :data {:info {:title "Nomis Movies"
+                   :description "A demo of a three-layer app, about movies"}
+            :tags [{:name "TODO What should this be? #1"
+                    :description "TODO What should this be? #2"}]}}}
 
    (c/context "/api" []
-     :tags ["api"]
+     :tags ["api"] ; TODO What's this?
 
-     (c/GET "/plus" []
-       :return {:result Long}
-       :query-params [x :- Long, y :- Long]
-       :summary "adds two numbers together"
-       (rur/ok {:result (+ x y)}))
-
-     (c/POST "/echo" []
-       :return Pizza
-       :body [pizza Pizza]
-       :summary "echoes a Pizza"
-       (rur/ok pizza))
-
-     (c/GET "/hello-as-resource/:id" [id]
-       :query-params [name :- String]
-       :summary "An endpoint with a parameter in the URL and a query parameter"
-       (rur/ok (str "Hello "
-                    name
-                    ". The id is "
-                    id
-                    ".\n"))))))
+     (c/GET "/movies" []
+       :return [schemas/Movie]
+       :summary "Provide list of all movies"
+       (rur/ok [{:name "ET"}
+                {:name "Citizen Kane"}])))))

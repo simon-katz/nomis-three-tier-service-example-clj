@@ -9,9 +9,10 @@
 
 (facts "Compojure api tests"
 
-  (fact "Test GET request to /hello?name={a-name} returns expected response"
+  (fact "Test GET request to /movies returns expected response"
     (let [handler  (SUT/make-handler {})
-          response (handler (-> (mock/request :get "/api/plus?x=1&y=2")))
+          response (handler (mock/request :get "/api/movies"))
           body     (parse-body (:body response))]
       (:status response) => 200
-      (:result body) => 3)))
+      body => [{:name "ET"}
+               {:name "Citizen Kane"}])))
