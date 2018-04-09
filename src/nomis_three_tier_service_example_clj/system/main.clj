@@ -5,7 +5,7 @@
 
 (def ^:private config
   {:this-would-be "stuff grabbed from config files and environment"
-   :port 3000})
+   :port 7620})
 
 (defn -main
   [& args]
