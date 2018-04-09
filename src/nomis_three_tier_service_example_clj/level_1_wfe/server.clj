@@ -5,10 +5,10 @@
 (defn make-server [config handler]
   (let [port (:port config)]
     (timbre/info "Starting webserver on port" port)
-    {:server-info (jetty/run-jetty handler
-                                   {:port  port
-                                    :join? false})}))
+    {:jetty-webserver (jetty/run-jetty handler
+                                       {:port  port
+                                        :join? false})}))
 
 (defn stop [config server-map]
   (timbre/info "Stopping webserver")
-  (.stop (:server-info server-map)))
+  (.stop (:jetty-webserver server-map)))

@@ -9,17 +9,17 @@
 (defn start [system]
   ;; TODO Use integrant.
   (timbre/info "Starting system")
-  (assert (nil? (:server-map system)))
+  (assert (nil? (:webserver-info system)))
   (let [config     (:config system)
         handler    (handlers/make-handler config)
         server-map (server/make-server config handler)]
-    (assoc system :server-map server-map)))
+    (assoc system :webserver-info server-map)))
 
 (defn stop [system]
   (timbre/info "Stopping system")
-  (if (:server-map system)
+  (if (:webserver-info system)
     (let [config (:config system)]
-      (server/stop config (:server-map system))
+      (server/stop config (:webserver-info system))
       (dissoc system
-              :server-map))
+              :webserver-info))
     system))
