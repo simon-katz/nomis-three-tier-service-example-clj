@@ -7,12 +7,10 @@
 (defn parse-body [body]
   (cheshire/parse-string (slurp body) true))
 
-(facts "Compojure api tests"
-
-  (fact "Test GET request to /movies returns expected response"
-    (let [handler  (SUT/make-handler {})
-          response (handler (mock/request :get "/api/movies"))
-          body     (parse-body (:body response))]
-      (:status response) => 200
-      body => [{:name "ET"}
-               {:name "Citizen Kane"}])))
+(fact "Test GET request to /movies returns expected response"
+  (let [handler  (SUT/make-handler {})
+        response (handler (mock/request :get "/api/movies"))
+        body     (parse-body (:body response))]
+    (:status response) => 200
+    body => [{:name "ET"}
+             {:name "Citizen Kane"}]))
