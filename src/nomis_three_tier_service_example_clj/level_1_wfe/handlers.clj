@@ -1,32 +1,48 @@
 (ns nomis-three-tier-service-example-clj.level-1-wfe.handlers
-  (:require [yada.yada :as yada]))
+  (:require [compojure.api.sweet :as c]
+            [ring.util.http-response :as rur]
+            [schema.core :as s]))
 
-;;;; TODO Set up tests as in com.nomistech.clojure-the-language.
-;;;;      - But maybe tidy that first.
-;;;; TODO Look at Swagger generation.
+;;;; ___________________________________________________________________________
 
-(def my-resource
-  (yada/resource
-   {:methods
-    {:get
-     {:parameters {:query {:name String}
-                   :path {:id String}}
-      :produces "text/plain"
-      :response (fn [ctx]
-                  (str "Hello "
-                       (get-in ctx [:parameters :query :name])
-                       ". The id is "
-                       (get-in ctx [:parameters :path :id])
-                       ".\n"))}}}))
+;;;; Example building on compojure-api template stuff.
+
+(s/defschema Pizza
+  {:name s/Str
+   (s/optional-key :description) s/Str
+   :size (s/enum :L :M :S)
+   :origin {:country (s/enum :FI :PO)
+            :city s/Str}})
 
 (defn make-routes [config]
+  (c/api
+   {:swagger
+    {:ui "/"
+     :spec "/swagger.json"
+     :data {:info {:title "Compojure-api-play"
+                   :description "Compojure Api example"}
+            :tags [{:name "api", :description "some apis"}]}}}
 
-  ["/"
+   (c/context "/api" []
+     :tags ["api"]
 
-   [[["hello-as-resource" "/" :id] (yada/handler my-resource)]
+     (c/GET "/plus" []
+       :return {:result Long}
+       :query-params [x :- Long, y :- Long]
+       :summary "adds two numbers together"
+       (rur/ok {:result (+ x y)}))
 
-    [true (yada/as-resource nil)]]])
+     (c/POST "/echo" []
+       :return Pizza
+       :body [pizza Pizza]
+       :summary "echoes a Pizza"
+       (rur/ok pizza))
 
-;;;; TODO Set up some real handler tests.
-
-(def x 42)
+     (c/GET "/hello-as-resource/:id" [id]
+       :query-params [name :- String]
+       :summary "An endpoint with a parameter in the URL and a query parameter"
+       (rur/ok (str "Hello "
+                    name
+                    ". The id is "
+                    id
+                    ".\n"))))))

@@ -18,8 +18,9 @@
 (defn stop [system]
   (timbre/info "Stopping system")
   (if (:server-map system)
-    (do (server/stop (:server-map system))
-        (dissoc system
-                :server-map
-                :routes))
+    (let [config (:config system)]
+      (server/stop config (:server-map system))
+      (dissoc system
+              :server-map
+              :routes))
     system))
