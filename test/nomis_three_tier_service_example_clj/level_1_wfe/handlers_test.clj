@@ -8,7 +8,7 @@
 (defn parse-body [body]
   (cheshire/parse-string (slurp body) true))
 
-(fact "Test GET request to /movies returns expected response"
+(fact "Test GET request to /api/movies returns expected response"
   (let [config   {:movie-service-1 {:port 1001}
                   :movie-service-2 {:port 1002}}
         handler  (SUT/make-handler config)
@@ -24,11 +24,9 @@
     {:name "Movie D"}]]
   (provided (http-client/get "http://localhost:1001/api/movies-1"
                              {:as :json})
-            => {:status 200
-                :body [{:name "Movie A"}
+            => {:body [{:name "Movie A"}
                        {:name "Movie B"}]}
             (http-client/get "http://localhost:1002/api/movies-2"
                              {:as :json})
-            => {:status 200
-                :body [{:name "Movie C"}
+            => {:body [{:name "Movie C"}
                        {:name "Movie D"}]}))
