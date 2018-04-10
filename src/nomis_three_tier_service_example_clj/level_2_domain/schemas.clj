@@ -1,4 +1,4 @@
-(ns nomis-three-tier-service-example-clj.schemas.schemas
+(ns nomis-three-tier-service-example-clj.level-2-domain.schemas
   (:require [schema.core :as s]))
 
 (s/defschema Movie

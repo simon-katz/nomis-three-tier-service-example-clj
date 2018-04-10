@@ -1,5 +1,6 @@
 (ns nomis-three-tier-service-example-clj.level-1-wfe.handlers-test
   (:require [cheshire.core :as cheshire]
+            [clj-http.client :as http-client]
             [midje.sweet :refer :all]
             [nomis-three-tier-service-example-clj.level-1-wfe.handlers :as SUT]
             [ring.mock.request :as mock]))
@@ -8,11 +9,26 @@
   (cheshire/parse-string (slurp body) true))
 
 (fact "Test GET request to /movies returns expected response"
-  (let [handler  (SUT/make-handler {})
+  (let [config   {:movie-service-1 {:port 1001}
+                  :movie-service-2 {:port 1002}}
+        handler  (SUT/make-handler config)
         response (handler (mock/request :get "/api/movies"))
         body     (parse-body (:body response))]
-    (:status response) => 200
-    body => [{:name "ET"}
-             {:name "Citizen Kane"}
-             {:name "Groundhog Day"}
-             {:name "Roman Holiday"}]))
+    [(:status response)
+     body])
+  =>
+  [200
+   [{:name "Movie A"}
+    {:name "Movie B"}
+    {:name "Movie C"}
+    {:name "Movie D"}]]
+  (provided (http-client/get "http://localhost:1001/api/movies-1"
+                             {:as :json})
+            => {:status 200
+                :body [{:name "Movie A"}
+                       {:name "Movie B"}]}
+            (http-client/get "http://localhost:1002/api/movies-2"
+                             {:as :json})
+            => {:status 200
+                :body [{:name "Movie C"}
+                       {:name "Movie D"}]}))

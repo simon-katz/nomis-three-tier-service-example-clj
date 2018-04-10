@@ -5,7 +5,9 @@
 
 (def ^:private config
   {:this-would-be "stuff grabbed from config files and environment"
-   :port 7620})
+   :port 7620
+   :movie-service-1 {:port 7621}
+   :movie-service-2 {:port 7622}})
 
 (defn -main
   [& args]
