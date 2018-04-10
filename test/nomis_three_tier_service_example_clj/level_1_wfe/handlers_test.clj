@@ -13,4 +13,6 @@
         body     (parse-body (:body response))]
     (:status response) => 200
     body => [{:name "ET"}
-             {:name "Citizen Kane"}]))
+             {:name "Citizen Kane"}
+             {:name "Groundhog Day"}
+             {:name "Roman Holiday"}]))

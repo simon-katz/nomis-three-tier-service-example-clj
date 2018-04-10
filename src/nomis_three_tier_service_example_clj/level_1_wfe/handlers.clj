@@ -1,5 +1,6 @@
 (ns nomis-three-tier-service-example-clj.level-1-wfe.handlers
   (:require [compojure.api.sweet :as c]
+            [nomis-three-tier-service-example-clj.level-2-domain.movies :as movies]
             [nomis-three-tier-service-example-clj.schemas.schemas :as schemas]
             [ring.util.http-response :as rur]))
 
@@ -26,5 +27,4 @@
      (c/GET "/movies" []
        :return [schemas/Movie]
        :summary "Provide list of all movies"
-       (rur/ok [{:name "ET"}
-                {:name "Citizen Kane"}])))))
+       (rur/ok (movies/movies config))))))
