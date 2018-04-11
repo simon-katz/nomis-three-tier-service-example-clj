@@ -1,4 +1,4 @@
-(ns fake-external-services.fake-movie-handler-2
+(ns fake-external-services.fake-fresh-potatoes-handler
   (:require [compojure.api.sweet :as c]
             [ring.util.http-response :as rur]))
 

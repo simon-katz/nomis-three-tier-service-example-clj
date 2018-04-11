@@ -1,4 +1,4 @@
-(ns fake-external-services.fake-movie-handler-1
+(ns fake-external-services.fake-my-mdb-handler
   (:require [compojure.api.sweet :as c]
             [ring.util.http-response :as rur]))
 
