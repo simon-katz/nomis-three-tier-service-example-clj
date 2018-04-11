@@ -23,12 +23,12 @@
                        (:port config)
                        (handlers/make-handler config))
           ;; Fake services -- wouldn't have these in a real app.
-          (make-server :fake-movie-service-1-webserver-info
-                       (-> config :movie-service-1 :port)
-                       (fake-movie-handler-1/make-handler config))
           (make-server :fake-movie-service-2-webserver-info
-                       (-> config :movie-service-2 :port)
-                       (fake-movie-handler-2/make-handler config))))))
+                       (-> config :fresh-potatoes-service :port)
+                       (fake-movie-handler-2/make-handler config))
+          (make-server :fake-movie-service-1-webserver-info
+                       (-> config :my-mdb-service :port)
+                       (fake-movie-handler-1/make-handler config))))))
 
 (defn stop [system]
   (timbre/info "Stopping system")

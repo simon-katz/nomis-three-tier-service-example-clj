@@ -4,7 +4,7 @@
 (defn movies-2 [config]
   (let [rsp (http-client/get (str "http://localhost:"
                                   (-> config
-                                      :movie-service-2
+                                      :fresh-potatoes-service
                                       :port)
                                   "/api/movies-2")
                              {:as :json})]
