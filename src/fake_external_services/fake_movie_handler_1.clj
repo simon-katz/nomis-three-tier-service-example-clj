@@ -1,4 +1,4 @@
-(ns nomis-three-tier-service-example-clj.zzzz-fake-external-services.fake-movie-handler-1
+(ns fake-external-services.fake-movie-handler-1
   (:require [compojure.api.sweet :as c]
             [ring.util.http-response :as rur]))
 

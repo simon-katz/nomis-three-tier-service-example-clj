@@ -1,8 +1,8 @@
 (ns nomis-three-tier-service-example-clj.system.system
   (:require [nomis-three-tier-service-example-clj.level-1-wfe.handlers :as handlers]
             [nomis-three-tier-service-example-clj.level-1-wfe.server :as server]
-            [nomis-three-tier-service-example-clj.zzzz-fake-external-services.fake-movie-handler-1 :as fake-movie-handler-1]
-            [nomis-three-tier-service-example-clj.zzzz-fake-external-services.fake-movie-handler-2 :as fake-movie-handler-2]
+            [fake-external-services.fake-movie-handler-1 :as fake-movie-handler-1]
+            [fake-external-services.fake-movie-handler-2 :as fake-movie-handler-2]
             [taoensso.timbre :as timbre]))
 
 (defn make-system [config]
