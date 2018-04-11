@@ -2,7 +2,7 @@
   (:require [cheshire.core :as cheshire]
             [clj-http.client :as http-client]
             [midje.sweet :refer :all]
-            [nomis-three-tier-service-example-clj.level-1-wfe.handlers :as SUT]
+            [nomis-three-tier-service-example-clj.level-1-wfe.handlers :as sut]
             [ring.mock.request :as mock]))
 
 (defn parse-body [body]
@@ -11,7 +11,7 @@
 (fact "Test GET request to /api/movies returns expected response"
   (let [config   {:fresh-potatoes-service {:port 1001}
                   :my-mdb-service {:port 1002}}
-        handler  (SUT/make-handler config)
+        handler  (sut/make-handler config)
         response (handler (mock/request :get "/api/movies"))
         body     (parse-body (:body response))]
     [(:status response)
