@@ -1,11 +1,11 @@
-(ns nomis-three-tier-service-example-clj.level-3-services.movie-service-2
+(ns nomis-three-tier-service-example-clj.level-3-services.my-mdb
   (:require [clj-http.client :as http-client]))
 
-(defn movies-2 [config]
+(defn movies-1 [config]
   (let [rsp (http-client/get (str "http://localhost:"
                                   (-> config
-                                      :movie-service-2
+                                      :movie-service-1
                                       :port)
-                                  "/api/movies-2")
+                                  "/api/movies-1")
                              {:as :json})]
     (:body rsp)))
