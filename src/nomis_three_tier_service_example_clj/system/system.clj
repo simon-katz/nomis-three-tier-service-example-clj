@@ -31,16 +31,14 @@
 
 (defn stop [system]
   (timbre/info "Stopping system")
-  (if (:webserver-info system)
-    (let [config (:config system)]
-      (server/stop-server config
-                          (:webserver-info system))
-      (server/stop-server config
-                          (:fake-movie-service-1-webserver-info system))
-      (server/stop-server config
-                          (:fake-movie-service-2-webserver-info system))
-      (dissoc system
-              :webserver-info
-              :fake-movie-service-1-webserver-info
-              :fake-movie-service-2-webserver-info))
-    system))
+  (let [config (:config system)]
+    (letfn [(stop-server [sys key]
+              (if-let [server-map (get sys key)]
+                (do
+                  (server/stop-server config server-map)
+                  (dissoc sys key))
+                sys))]
+      (-> system
+          (stop-server :webserver-info)
+          (stop-server :fake-movie-service-1-webserver-info)
+          (stop-server :fake-movie-service-2-webserver-info)))))
