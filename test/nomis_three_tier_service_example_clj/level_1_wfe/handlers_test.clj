@@ -22,11 +22,11 @@
     {:name "Movie B"}
     {:name "Movie C"}
     {:name "Movie D"}]]
-  (provided (http-client/get "http://localhost:1001/api/movies-2"
+  (provided (http-client/get "http://localhost:1001/api/fresh-potatoes-movies"
                              {:as :json})
             => {:body [{:name "Movie A"}
                        {:name "Movie B"}]}
-            (http-client/get "http://localhost:1002/api/movies-1"
+            (http-client/get "http://localhost:1002/api/my-mdb-movies"
                              {:as :json})
             => {:body [{:name "Movie C"}
                        {:name "Movie D"}]}))

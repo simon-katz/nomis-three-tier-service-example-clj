@@ -7,7 +7,7 @@
   {:this-would-be "stuff grabbed from config files and environment"
    :port 7620
    :fresh-potatoes-service {:port 7621}
-   :my-mdb-service {:port 7622}})
+   :my-mdb-service         {:port 7622}})
 
 (defn -main
   [& args]

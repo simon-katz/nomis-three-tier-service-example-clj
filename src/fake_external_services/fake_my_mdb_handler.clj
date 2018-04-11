@@ -5,7 +5,7 @@
 (defn make-handler [config]
   (c/api
    (c/context "/api" []
-     (c/GET "/movies-1" []
+     (c/GET "/my-mdb-movies" []
        :summary "Provide list of all movies"
        (rur/ok [{:name "ET"}
                 {:name "Citizen Kane"}])))))

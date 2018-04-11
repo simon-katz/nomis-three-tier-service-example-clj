@@ -1,8 +1,11 @@
 (ns nomis-three-tier-service-example-clj.system.system
-  (:require [nomis-three-tier-service-example-clj.level-1-wfe.handlers :as handlers]
-            [nomis-three-tier-service-example-clj.level-1-wfe.server :as server]
-            [fake-external-services.fake-fresh-potatoes-handler :as fake-movie-handler-2]
-            [fake-external-services.fake-my-mdb-handler :as fake-movie-handler-1]
+  (:require [nomis-three-tier-service-example-clj.level-1-wfe.handlers
+             :as handlers]
+            [nomis-three-tier-service-example-clj.level-1-wfe.server
+             :as server]
+            [fake-external-services.fake-fresh-potatoes-handler
+             :as fake-fresh-potatoes-handler]
+            [fake-external-services.fake-my-mdb-handler :as fake-my-mdb-handler]
             [taoensso.timbre :as timbre]))
 
 (defn make-system [config]
@@ -23,12 +26,12 @@
                        (:port config)
                        (handlers/make-handler config))
           ;; Fake services -- wouldn't have these in a real app.
-          (make-server :fake-movie-service-2-webserver-info
+          (make-server :fake-fresh-potatoes-webserver-info
                        (-> config :fresh-potatoes-service :port)
-                       (fake-movie-handler-2/make-handler config))
-          (make-server :fake-movie-service-1-webserver-info
+                       (fake-fresh-potatoes-handler/make-handler config))
+          (make-server :fake-my-mdb-webserver-info
                        (-> config :my-mdb-service :port)
-                       (fake-movie-handler-1/make-handler config))))))
+                       (fake-my-mdb-handler/make-handler config))))))
 
 (defn stop [system]
   (timbre/info "Stopping system")
@@ -42,5 +45,5 @@
       (-> system
           (stop-server :webserver-info)
           ;; Fake services -- wouldn't have these in a real app.
-          (stop-server :fake-movie-service-1-webserver-info)
-          (stop-server :fake-movie-service-2-webserver-info)))))
+          (stop-server :fake-fresh-potatoes-webserver-info)
+          (stop-server :fake-my-mdb-webserver-info)))))

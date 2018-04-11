@@ -5,5 +5,5 @@
              :as my-mdb-service]))
 
 (defn movies [config]
-  (concat (fresh-potatoes-service/movies-2 config)
-          (my-mdb-service/movies-1 config)))
+  (concat (fresh-potatoes-service/get-movies config)
+          (my-mdb-service/get-movies config)))
