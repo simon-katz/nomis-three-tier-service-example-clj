@@ -2,9 +2,9 @@
   (:require [fake-external-services.fake-fresh-potatoes-handler
              :as fake-fresh-potatoes-handler]
             [fake-external-services.fake-my-mdb-handler :as fake-my-mdb-handler]
-            [nomis-three-tier-service-example-clj.level-1-wfe.handlers
+            [nomis-three-tier-service-example-clj.layer-1-wfe.handlers
              :as handlers]
-            [nomis-three-tier-service-example-clj.level-1-wfe.server
+            [nomis-three-tier-service-example-clj.layer-1-wfe.server
              :as server]
             [taoensso.timbre :as timbre]))
 

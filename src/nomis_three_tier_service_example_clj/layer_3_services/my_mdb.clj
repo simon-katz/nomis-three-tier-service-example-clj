@@ -1,11 +1,11 @@
-(ns nomis-three-tier-service-example-clj.level-3-services.fresh-potatoes
+(ns nomis-three-tier-service-example-clj.layer-3-services.my-mdb
   (:require [clj-http.client :as http-client]))
 
 (defn get-movies [config]
   (let [rsp (http-client/get (str "http://localhost:"
                                   (-> config
-                                      :fresh-potatoes-service
+                                      :my-mdb-service
                                       :port)
-                                  "/api/fresh-potatoes-movies")
+                                  "/api/my-mdb-movies")
                              {:as :json})]
     (:body rsp)))

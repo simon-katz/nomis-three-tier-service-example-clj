@@ -1,4 +1,4 @@
-(ns nomis-three-tier-service-example-clj.level-1-wfe.server
+(ns nomis-three-tier-service-example-clj.layer-1-wfe.server
   (:require [ring.adapter.jetty :as jetty]
             [taoensso.timbre :as timbre]))
 

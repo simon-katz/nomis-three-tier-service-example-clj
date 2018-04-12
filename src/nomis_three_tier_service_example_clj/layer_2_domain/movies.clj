@@ -1,7 +1,7 @@
-(ns nomis-three-tier-service-example-clj.level-2-domain.movies
-  (:require [nomis-three-tier-service-example-clj.level-3-services.fresh-potatoes
+(ns nomis-three-tier-service-example-clj.layer-2-domain.movies
+  (:require [nomis-three-tier-service-example-clj.layer-3-services.fresh-potatoes
              :as fresh-potatoes-service]
-            [nomis-three-tier-service-example-clj.level-3-services.my-mdb
+            [nomis-three-tier-service-example-clj.layer-3-services.my-mdb
              :as my-mdb-service]))
 
 (defn movies [config]
