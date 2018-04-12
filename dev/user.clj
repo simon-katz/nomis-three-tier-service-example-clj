@@ -8,6 +8,8 @@
             [clojure.tools.namespace.move :refer :all]
             [clojure.tools.namespace.repl :refer :all]
             [midje.repl :refer :all]
+            [nomis-three-tier-service-example-clj.level-2-domain.movies
+             :as movies]
             [nomis-three-tier-service-example-clj.system.main :as main]
             [nomis-three-tier-service-example-clj.system.system :as system]))
 
@@ -71,3 +73,6 @@
                         (:port @#'main/config)
                         "/api/movies")
                    {:as :json}))
+
+(defn get-movies-via-domain []
+  (movies/movies @#'main/config))
