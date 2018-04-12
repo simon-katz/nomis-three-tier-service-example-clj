@@ -7,3 +7,7 @@
 (defn movies [config]
   (concat (fresh-potatoes-service/get-movies config)
           (my-mdb-service/get-movies config)))
+
+(defn movies-in-alphabetical-order [config]
+  (sort-by :name
+           (movies config)))

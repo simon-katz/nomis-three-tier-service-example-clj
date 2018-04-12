@@ -16,3 +16,16 @@
                                                                ..film-2..]
             (my-mdb-service/get-movies ..config..) => [..film-3..
                                                        ..film-4..]))
+
+(fact "`movies-in-alphabetical-order`"
+  (sut/movies-in-alphabetical-order ..config..)
+  => [{:name "A"}
+      {:name "B"}
+      {:name "C"}
+      {:name "D"}]
+  (provided (fresh-potatoes-service/get-movies ..config..)
+            => [{:name "C"}
+                {:name "B"}]
+            (my-mdb-service/get-movies ..config..)
+            => [{:name "D"}
+                {:name "A"}]))
