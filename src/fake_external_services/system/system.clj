@@ -1,11 +1,12 @@
-(ns nomis-three-tier-service-example-clj.system.system
-  (:require [nomis-three-tier-service-example-clj.layer-1-wfe.handlers
-             :as handlers]
+(ns fake-external-services.system.system
+  (:require [fake-external-services.layer-1-wfe.fake-fresh-potatoes-handler
+             :as fake-fresh-potatoes-handler]
+            [fake-external-services.layer-1-wfe.fake-my-mdb-handler :as fake-my-mdb-handler]
             [nomis-three-tier-service-example-clj.layer-1-wfe.server
              :as server]
             [taoensso.timbre :as timbre]))
 
-(defn make-system [config]
+(defn make-fake-services [config]
   {:config config})
 
 (defn start [system]
@@ -22,9 +23,12 @@
                      system-map-key
                      (server/make-server port handler)))]
       (-> system
-          (make-server :webserver-info
-                       (:port config)
-                       (handlers/make-handler config))))))
+          (make-server :fake-fresh-potatoes-webserver-info
+                       (-> config :fresh-potatoes-service :port)
+                       (fake-fresh-potatoes-handler/make-handler config))
+          (make-server :fake-my-mdb-webserver-info
+                       (-> config :my-mdb-service :port)
+                       (fake-my-mdb-handler/make-handler config))))))
 
 (defn stop [system]
   (timbre/info "Stopping system")
@@ -36,4 +40,5 @@
                   (dissoc sys system-map-key))
                 sys))]
       (-> system
-          (stop-server :webserver-info)))))
+          (stop-server :fake-fresh-potatoes-webserver-info)
+          (stop-server :fake-my-mdb-webserver-info)))))

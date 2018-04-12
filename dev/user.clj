@@ -7,6 +7,7 @@
             [clojure.string :as str]
             [clojure.tools.namespace.move :refer :all]
             [clojure.tools.namespace.repl :refer :all]
+            [fake-external-services.system.system :as fake-system]
             [midje.repl :refer :all]
             [nomis-three-tier-service-example-clj.layer-2-domain.movies
              :as movies]
@@ -19,6 +20,20 @@
 ;;;; - http://nomistech.blogspot.co.uk/2013/06/stuart-sierras-clojure-development_18.html
 ;;;; - http://thinkrelevance.com/blog/2013/06/04/clojure-workflow-reloaded
 ;;;; - https://github.com/stuartsierra/component#reloading
+
+(defonce fake-services
+  nil)
+
+(defn init-fake-services []
+  (alter-var-root #'fake-services
+                  (fn [_]
+                    (fake-system/make-fake-services @#'main/config))))
+
+(defn start-fake-services []
+  (alter-var-root #'fake-services fake-system/start))
+
+(defn stop-fake-services []
+  (alter-var-root #'fake-services fake-system/stop))
 
 (defonce the-system
   ;; "A container for the current instance of the application.
@@ -33,6 +48,7 @@
 (defn init
   "Creates a system and makes it the current development system."
   []
+  (init-fake-services)
   (alter-var-root #'the-system
                   (fn [_]
                     (system/make-system @#'main/config))))
@@ -40,11 +56,13 @@
 (defn start
   "Starts the current development system."
   []
+  (start-fake-services)
   (alter-var-root #'the-system system/start))
 
 (defn stop
   "Shuts down and destroys the current development system."
   []
+  (stop-fake-services)
   (alter-var-root #'the-system system/stop))
 
 (defn go
@@ -64,6 +82,11 @@
   []
   (stop)
   (refresh-all :after 'user/go))
+
+(defn run-fake-services [] ; useful if we want to do a `leun run` or run an uberjar locally
+  (when-not fake-services
+   (init-fake-services))
+  (start-fake-services))
 
 ;;;; ___________________________________________________________________________
 ;;;; App-specific additional utilities for the REPL
