@@ -1,7 +1,7 @@
 (ns nomis-three-tier-service-example-clj.system.system
-  (:require [fake-external-services.fake-fresh-potatoes-handler
+  (:require [fake-external-services.layer-1-wfe.fake-fresh-potatoes-handler
              :as fake-fresh-potatoes-handler]
-            [fake-external-services.fake-my-mdb-handler :as fake-my-mdb-handler]
+            [fake-external-services.layer-1-wfe.fake-my-mdb-handler :as fake-my-mdb-handler]
             [nomis-three-tier-service-example-clj.layer-1-wfe.handlers
              :as handlers]
             [nomis-three-tier-service-example-clj.layer-1-wfe.server

@@ -1,4 +1,4 @@
-(ns fake-external-services.fake-fresh-potatoes-handler
+(ns fake-external-services.layer-1-wfe.fake-fresh-potatoes-handler
   (:require [compojure.api.sweet :as c]
             [ring.util.http-response :as rur]))
 
