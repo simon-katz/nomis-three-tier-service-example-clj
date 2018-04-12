@@ -23,6 +23,9 @@
             :tags [{:name "TODO What should this be? #1"
                     :description "TODO What should this be? #2"}]}}}
 
+   (c/GET "/favicon.ico" [] ; avoid errors when playing with API in a browser
+     (rur/ok nil))
+
    (c/context "/api" []
      :tags ["api"] ; TODO What's this?
 
