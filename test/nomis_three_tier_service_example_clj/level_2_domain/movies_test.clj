@@ -17,7 +17,7 @@
             (my-mdb-service/get-movies ..config..) => [..film-3..
                                                        ..film-4..]))
 
-(fact "`movies-in-alphabetical-order`"
+(fact "`movies-in-alphabetical-order` combines and sorts movies from fresh-potatoes and my-mdb"
   (sut/movies-in-alphabetical-order ..config..)
   => [{:name "A"}
       {:name "B"}
