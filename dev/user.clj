@@ -1,5 +1,6 @@
 (ns user
-  (:require [clojure.java.javadoc :refer [javadoc]]
+  (:require [clj-http.client :as http-client]
+            [clojure.java.javadoc :refer [javadoc]]
             [clojure.pprint :refer [pp pprint]]
             [clojure.repl :refer :all ; [apropos dir doc find-doc pst source]
              ]
@@ -64,3 +65,9 @@
 
 ;;;; ___________________________________________________________________________
 ;;;; App-specific additional utilities for the REPL
+
+(defn get-movies-via-http []
+  (http-client/get (str "http://localhost:"
+                        (:port @#'main/config)
+                        "/api/movies")
+                   {:as :json}))
