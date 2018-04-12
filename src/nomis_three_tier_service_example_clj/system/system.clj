@@ -10,9 +10,6 @@
 
 (defn start [system]
   ;; TODO Use integrant.
-  ;; TODO Maybe have a separate thing for starting up the fake services.
-  ;;      - And `user/start` and `user/stop` will do both things, and `-main`
-  ;;        will do only one.
   (timbre/info "Starting system")
   (assert (nil? (:webserver-info system)))
   (let [config (:config system)]
