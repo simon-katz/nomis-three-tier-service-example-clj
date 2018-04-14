@@ -5,6 +5,10 @@
 
 (defn make-handler [config]
   (c/api
+
+   (c/GET "/favicon.ico" [] ; avoid errors when playing with API in a browser
+     (rur/ok nil))
+   
    (c/context "/api" []
      (c/GET "/my-mdb-movies" []
        :summary "Provide list of all movies"
