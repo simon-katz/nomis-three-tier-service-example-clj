@@ -83,7 +83,7 @@
   (stop)
   (refresh-all :after 'user/go))
 
-(defn run-fake-services [] ; useful if we want to do a `leun run` or run an uberjar locally
+(defn run-fake-services [] ; useful if we want to do a `lein run` or run an uberjar locally
   (when-not fake-services
    (init-fake-services))
   (start-fake-services))
