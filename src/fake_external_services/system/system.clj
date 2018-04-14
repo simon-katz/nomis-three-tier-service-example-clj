@@ -6,9 +6,6 @@
              :as server]
             [taoensso.timbre :as timbre]))
 
-(defn make-fake-services [config]
-  {:config config})
-
 (defn start [system]
   ;; TODO Use integrant.
   (timbre/info "Starting system")
