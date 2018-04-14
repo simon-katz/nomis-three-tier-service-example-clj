@@ -32,9 +32,9 @@
      (c/GET "/movies" []
        :return [schemas/Movie]
        :summary "Provide list of all movies"
-       (rur/ok (movies/movies config)))
+       (rur/ok (movies/get-movies config)))
 
      (c/GET "/movies-in-alphabetical-order" []
        :return [schemas/Movie]
        :summary "Provide list of all movies in alphabetical order"
-       (rur/ok (movies/movies-in-alphabetical-order config))))))
+       (rur/ok (movies/get-movies-in-alphabetical-order config))))))

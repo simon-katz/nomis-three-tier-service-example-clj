@@ -4,10 +4,11 @@
             [nomis-three-tier-service-example-clj.layer-3-services.my-mdb
              :as my-mdb-service]))
 
-(defn movies [config]
+(defn get-movies [config]
   (concat (fresh-potatoes-service/get-movies config)
           (my-mdb-service/get-movies config)))
 
-(defn movies-in-alphabetical-order [config]
+(defn get-movies-in-alphabetical-order [config]
   (sort-by :name
-           (movies config)))
+           (get-movies config)))
+

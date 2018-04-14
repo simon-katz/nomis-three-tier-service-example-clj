@@ -6,8 +6,8 @@
             [nomis-three-tier-service-example-clj.layer-3-services.my-mdb
              :as my-mdb-service]))
 
-(fact "`movies` combines movies from fresh-potatoes and my-mdb"
-  (sut/movies ..config..)
+(fact "`get-movies` combines movies from fresh-potatoes and my-mdb"
+  (sut/get-movies ..config..)
   => [..film-1..
       ..film-2..
       ..film-3..
@@ -17,8 +17,8 @@
             (my-mdb-service/get-movies ..config..) => [..film-3..
                                                        ..film-4..]))
 
-(fact "`movies-in-alphabetical-order` combines and sorts movies from fresh-potatoes and my-mdb"
-  (sut/movies-in-alphabetical-order ..config..)
+(fact "`get-movies-in-alphabetical-order` combines and sorts movies from fresh-potatoes and my-mdb"
+  (sut/get-movies-in-alphabetical-order ..config..)
   => [{:name "A"}
       {:name "B"}
       {:name "C"}
