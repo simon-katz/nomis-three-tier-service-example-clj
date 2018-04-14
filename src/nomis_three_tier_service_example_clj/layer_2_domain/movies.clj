@@ -10,5 +10,5 @@
           (my-mdb-facade/get-movies config)))
 
 (defn get-movies-in-alphabetical-order [config]
-  (sort-by :name
+  (sort-by :title
            (get-movies config)))

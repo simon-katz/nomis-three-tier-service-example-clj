@@ -3,7 +3,7 @@
    [schema.core :as s]))
 
 (s/defschema Movie
-  {:name                          s/Str
+  {:title                         s/Str
    (s/optional-key :description)  s/Str
    (s/optional-key :director)     s/Str
    (s/optional-key :release-date) s/Str ; TODO Maybe make this a date

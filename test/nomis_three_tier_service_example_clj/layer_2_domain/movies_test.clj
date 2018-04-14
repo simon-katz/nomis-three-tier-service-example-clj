@@ -9,26 +9,26 @@
 
 (fact "`get-movies` combines movies from fresh-potatoes and my-mdb"
   (sut/get-movies ..config..)
-  => [{:name "C"}
-      {:name "B"}
-      {:name "D"}
-      {:name "A"}]
+  => [{:title "C"}
+      {:title "B"}
+      {:title "D"}
+      {:title "A"}]
   (provided (fresh-potatoes-service/get-movies ..config..)
             => [{:name "C"}
                 {:name "B"}]
             (my-mdb-service/get-movies ..config..)
-            => [{:name "D"}
-                {:name "A"}]))
+            => [{:moniker "D"}
+                {:moniker "A"}]))
 
 (fact "`get-movies-in-alphabetical-order` combines and sorts movies from fresh-potatoes and my-mdb"
   (sut/get-movies-in-alphabetical-order ..config..)
-  => [{:name "A"}
-      {:name "B"}
-      {:name "C"}
-      {:name "D"}]
+  => [{:title "A"}
+      {:title "B"}
+      {:title "C"}
+      {:title "D"}]
   (provided (fresh-potatoes-service/get-movies ..config..)
             => [{:name "C"}
                 {:name "B"}]
             (my-mdb-service/get-movies ..config..)
-            => [{:name "D"}
-                {:name "A"}]))
+            => [{:moniker "D"}
+                {:moniker "A"}]))
