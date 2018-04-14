@@ -1,1 +1,2 @@
 * Use core.spec instead of Plumatic schema
+** Hmmm; I think wait for spec to be less alpha-y
