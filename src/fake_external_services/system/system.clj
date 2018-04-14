@@ -1,10 +1,11 @@
 (ns fake-external-services.system.system
-  (:require [fake-external-services.layer-1-wfe.fake-fresh-potatoes-handler
-             :as fake-fresh-potatoes-handler]
-            [fake-external-services.layer-1-wfe.fake-my-mdb-handler :as fake-my-mdb-handler]
-            [nomis-three-tier-service-example-clj.layer-1-wfe.server
-             :as server]
-            [taoensso.timbre :as timbre]))
+  (:require
+   [fake-external-services.layer-1-wfe.fake-fresh-potatoes-handler
+    :as fake-fresh-potatoes-handler]
+   [fake-external-services.layer-1-wfe.fake-my-mdb-handler
+    :as fake-my-mdb-handler]
+   [nomis-three-tier-service-example-clj.layer-1-wfe.server :as server]
+   [taoensso.timbre :as timbre]))
 
 (defn start [system]
   ;; TODO Use integrant.

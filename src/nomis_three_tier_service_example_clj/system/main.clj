@@ -1,6 +1,7 @@
 (ns nomis-three-tier-service-example-clj.system.main
-  (:require [nomis-three-tier-service-example-clj.system.system :as system]
-            [taoensso.timbre :as timbre])
+  (:require
+   [nomis-three-tier-service-example-clj.system.system :as system]
+   [taoensso.timbre :as timbre])
   (:gen-class))
 
 (def ^:private config

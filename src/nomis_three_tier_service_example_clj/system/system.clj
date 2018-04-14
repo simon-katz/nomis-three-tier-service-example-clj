@@ -1,9 +1,8 @@
 (ns nomis-three-tier-service-example-clj.system.system
-  (:require [nomis-three-tier-service-example-clj.layer-1-wfe.handlers
-             :as handlers]
-            [nomis-three-tier-service-example-clj.layer-1-wfe.server
-             :as server]
-            [taoensso.timbre :as timbre]))
+  (:require
+   [nomis-three-tier-service-example-clj.layer-1-wfe.handlers :as handlers]
+   [nomis-three-tier-service-example-clj.layer-1-wfe.server :as server]
+   [taoensso.timbre :as timbre]))
 
 (defn make-system [config]
   {:config config})

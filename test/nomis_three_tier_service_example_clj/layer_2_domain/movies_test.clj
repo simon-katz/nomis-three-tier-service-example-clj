@@ -1,10 +1,11 @@
 (ns nomis-three-tier-service-example-clj.layer-2-domain.movies-test
-  (:require [midje.sweet :refer :all]
-            [nomis-three-tier-service-example-clj.layer-2-domain.movies :as sut]
-            [nomis-three-tier-service-example-clj.layer-3-services.fresh-potatoes
-             :as fresh-potatoes-service]
-            [nomis-three-tier-service-example-clj.layer-3-services.my-mdb
-             :as my-mdb-service]))
+  (:require
+   [midje.sweet :refer :all]
+   [nomis-three-tier-service-example-clj.layer-2-domain.movies :as sut]
+   [nomis-three-tier-service-example-clj.layer-3-services.fresh-potatoes
+    :as fresh-potatoes-service]
+   [nomis-three-tier-service-example-clj.layer-3-services.my-mdb
+    :as my-mdb-service]))
 
 (fact "`get-movies` combines movies from fresh-potatoes and my-mdb"
   (sut/get-movies ..config..)

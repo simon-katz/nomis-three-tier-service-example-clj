@@ -1,6 +1,7 @@
 (ns fake-external-services.layer-1-wfe.fake-my-mdb-handler
-  (:require [compojure.api.sweet :as c]
-            [ring.util.http-response :as rur]))
+  (:require
+   [compojure.api.sweet :as c]
+   [ring.util.http-response :as rur]))
 
 (defn make-handler [config]
   (c/api
