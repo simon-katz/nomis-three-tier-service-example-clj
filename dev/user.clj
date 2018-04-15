@@ -7,7 +7,7 @@
             [clojure.string :as str]
             [clojure.tools.namespace.move :refer :all]
             [clojure.tools.namespace.repl :refer :all]
-            [fake-external-services.system.system :as fake-system]
+            [fake-external-services.system.fake-system :as fake-system]
             [midje.repl :refer :all]
             [nomis-movies.layer-2-domain.movies :as movies]
             [nomis-movies.system.main :as main]
