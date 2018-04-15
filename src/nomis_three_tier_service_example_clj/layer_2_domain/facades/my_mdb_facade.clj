@@ -6,7 +6,10 @@
     :as my-mdb-service]
    [schema.core :as s]))
 
+(defn my-mdb-movie->movie [x]
+  (set/rename-keys x {:moniker :title}))
+
 (defn get-movies [config]
   (->> (my-mdb-service/get-movies config)
-       (map #(set/rename-keys % {:moniker :title}))
+       (map my-mdb-movie->movie)
        (s/validate [schemas/Movie])))

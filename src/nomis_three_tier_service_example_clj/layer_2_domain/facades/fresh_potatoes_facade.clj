@@ -6,8 +6,11 @@
     :as fresh-potatoes-service]
    [schema.core :as s]))
 
+(defn fresh-potatoes-movie->movie [x]
+  (set/rename-keys x {:name :title}))
+
 (defn get-movies [config]
   (->> (fresh-potatoes-service/get-movies config)
-       (map #(set/rename-keys % {:name :title}))
+       (map fresh-potatoes-movie->movie)
        (s/validate [schemas/Movie])))
 
