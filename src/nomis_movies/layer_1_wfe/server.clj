@@ -1,7 +1,6 @@
 (ns nomis-movies.layer-1-wfe.server
-  (:require
-   [ring.adapter.jetty :as jetty]
-   [taoensso.timbre :as timbre]))
+  (:require [ring.adapter.jetty :as jetty]
+            [taoensso.timbre :as timbre]))
 
 (defn make-server [port handler]
   (timbre/info "Starting webserver on port" port)

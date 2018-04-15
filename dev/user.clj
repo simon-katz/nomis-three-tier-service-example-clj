@@ -1,18 +1,17 @@
 (ns user
-  (:require
-   [clj-http.client :as http-client]
-   [clojure.java.javadoc :refer [javadoc]]
-   [clojure.pprint :refer [pp pprint]]
-   [clojure.repl :refer :all ; [apropos dir doc find-doc pst source]
-    ]
-   [clojure.string :as str]
-   [clojure.tools.namespace.move :refer :all]
-   [clojure.tools.namespace.repl :refer :all]
-   [fake-external-services.system.system :as fake-system]
-   [midje.repl :refer :all]
-   [nomis-movies.layer-2-domain.movies :as movies]
-   [nomis-movies.system.main :as main]
-   [nomis-movies.system.system :as system]))
+  (:require [clj-http.client :as http-client]
+            [clojure.java.javadoc :refer [javadoc]]
+            [clojure.pprint :refer [pp pprint]]
+            [clojure.repl :refer :all ; [apropos dir doc find-doc pst source]
+             ]
+            [clojure.string :as str]
+            [clojure.tools.namespace.move :refer :all]
+            [clojure.tools.namespace.repl :refer :all]
+            [fake-external-services.system.system :as fake-system]
+            [midje.repl :refer :all]
+            [nomis-movies.layer-2-domain.movies :as movies]
+            [nomis-movies.system.main :as main]
+            [nomis-movies.system.system :as system]))
 
 ;;;; ___________________________________________________________________________
 ;;;; Clojure workflow.

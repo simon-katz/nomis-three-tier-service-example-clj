@@ -1,8 +1,7 @@
 (ns nomis-movies.system.system
-  (:require
-   [nomis-movies.layer-1-wfe.handlers :as handlers]
-   [nomis-movies.layer-1-wfe.server :as server]
-   [taoensso.timbre :as timbre]))
+  (:require [nomis-movies.layer-1-wfe.handlers :as handlers]
+            [nomis-movies.layer-1-wfe.server :as server]
+            [taoensso.timbre :as timbre]))
 
 (defn make-system [config]
   {:config config})

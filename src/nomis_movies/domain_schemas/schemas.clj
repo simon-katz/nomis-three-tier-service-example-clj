@@ -1,6 +1,5 @@
 (ns nomis-movies.domain-schemas.schemas
-  (:require
-   [schema.core :as s]))
+  (:require [schema.core :as s]))
 
 (s/defschema Movie
   {:title                         s/Str

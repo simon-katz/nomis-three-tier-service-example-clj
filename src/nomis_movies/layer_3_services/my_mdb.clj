@@ -1,6 +1,5 @@
 (ns nomis-movies.layer-3-services.my-mdb
-  (:require
-   [clj-http.client :as http-client]))
+  (:require [clj-http.client :as http-client]))
 
 (defn get-movies [config]
   (let [rsp (http-client/get (str "http://localhost:"

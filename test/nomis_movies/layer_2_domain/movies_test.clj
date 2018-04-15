@@ -1,11 +1,9 @@
 (ns nomis-movies.layer-2-domain.movies-test
-  (:require
-   [midje.sweet :refer :all]
-   [nomis-movies.layer-2-domain.movies :as sut]
-   [nomis-movies.layer-3-services.fresh-potatoes
-    :as fresh-potatoes-service]
-   [nomis-movies.layer-3-services.my-mdb
-    :as my-mdb-service]))
+  (:require [midje.sweet :refer :all]
+            [nomis-movies.layer-2-domain.movies :as sut]
+            [nomis-movies.layer-3-services.fresh-potatoes
+             :as fresh-potatoes-service]
+            [nomis-movies.layer-3-services.my-mdb :as my-mdb-service]))
 
 (fact "`get-movies` combines movies from fresh-potatoes and my-mdb"
   (sut/get-movies ..config..)

@@ -1,10 +1,9 @@
 (ns nomis-movies.system.system-test
-  (:require
-   [clj-http.client :as http-client]
-   [nomis-movies.layer-2-domain.movies :as movies]
-   [nomis-movies.system.system :as sut]
-   [midje.sweet :refer :all]
-   [taoensso.timbre :as timbre]))
+  (:require [clj-http.client :as http-client]
+            [nomis-movies.layer-2-domain.movies :as movies]
+            [nomis-movies.system.system :as sut]
+            [midje.sweet :refer :all]
+            [taoensso.timbre :as timbre]))
 
 (defn system->jetty-webserver [system]
   (-> system

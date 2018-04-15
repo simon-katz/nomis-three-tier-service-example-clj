@@ -1,9 +1,8 @@
 (ns nomis-movies.layer-1-wfe.handlers
-  (:require
-   [compojure.api.sweet :as c]
-   [nomis-movies.layer-2-domain.movies :as movies]
-   [nomis-movies.domain-schemas.schemas :as schemas]
-   [ring.util.http-response :as rur]))
+  (:require [compojure.api.sweet :as c]
+            [nomis-movies.layer-2-domain.movies :as movies]
+            [nomis-movies.domain-schemas.schemas :as schemas]
+            [ring.util.http-response :as rur]))
 
 ;;;; ___________________________________________________________________________
 
