@@ -9,6 +9,6 @@
                                      {:port  port
                                       :join? false})})
 
-(defn stop-server [config server-map]
+(defn stop-server [server-map]
   (timbre/info "Stopping webserver on port" (:port server-map))
   (.stop (:jetty-webserver server-map)))

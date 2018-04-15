@@ -30,7 +30,7 @@
     (letfn [(stop-server [sys system-map-key]
               (if-let [server-map (get sys system-map-key)]
                 (do
-                  (server/stop-server config server-map)
+                  (server/stop-server server-map)
                   (dissoc sys system-map-key))
                 sys))]
       (-> system
