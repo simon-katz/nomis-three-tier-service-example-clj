@@ -1,4 +1,4 @@
-(ns nomis-three-tier-service-example-clj.layer-2-domain.schemas
+(ns nomis-three-tier-service-example-clj.domain-schemas.schemas
   (:require
    [schema.core :as s]))
 
