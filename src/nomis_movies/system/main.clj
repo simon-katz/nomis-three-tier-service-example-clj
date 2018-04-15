@@ -1,7 +1,7 @@
 (ns nomis-movies.system.main
+  (:gen-class)
   (:require [nomis-movies.system.system :as system]
-            [taoensso.timbre :as timbre])
-  (:gen-class))
+            [taoensso.timbre :as timbre]))
 
 (def ^:private config
   {:this-would-be "stuff grabbed from config files and environment"
