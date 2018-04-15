@@ -10,9 +10,9 @@
    [clojure.tools.namespace.repl :refer :all]
    [fake-external-services.system.system :as fake-system]
    [midje.repl :refer :all]
-   [nomis-three-tier-service-example-clj.layer-2-domain.movies :as movies]
-   [nomis-three-tier-service-example-clj.system.main :as main]
-   [nomis-three-tier-service-example-clj.system.system :as system]))
+   [nomis-movies.layer-2-domain.movies :as movies]
+   [nomis-movies.system.main :as main]
+   [nomis-movies.system.system :as system]))
 
 ;;;; ___________________________________________________________________________
 ;;;; Clojure workflow.

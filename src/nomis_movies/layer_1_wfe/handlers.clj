@@ -1,8 +1,8 @@
-(ns nomis-three-tier-service-example-clj.layer-1-wfe.handlers
+(ns nomis-movies.layer-1-wfe.handlers
   (:require
    [compojure.api.sweet :as c]
-   [nomis-three-tier-service-example-clj.layer-2-domain.movies :as movies]
-   [nomis-three-tier-service-example-clj.domain-schemas.schemas :as schemas]
+   [nomis-movies.layer-2-domain.movies :as movies]
+   [nomis-movies.domain-schemas.schemas :as schemas]
    [ring.util.http-response :as rur]))
 
 ;;;; ___________________________________________________________________________

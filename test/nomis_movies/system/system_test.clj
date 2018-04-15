@@ -1,8 +1,8 @@
-(ns nomis-three-tier-service-example-clj.system.system-test
+(ns nomis-movies.system.system-test
   (:require
    [clj-http.client :as http-client]
-   [nomis-three-tier-service-example-clj.layer-2-domain.movies :as movies]
-   [nomis-three-tier-service-example-clj.system.system :as sut]
+   [nomis-movies.layer-2-domain.movies :as movies]
+   [nomis-movies.system.system :as sut]
    [midje.sweet :refer :all]
    [taoensso.timbre :as timbre]))
 

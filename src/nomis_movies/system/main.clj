@@ -1,6 +1,6 @@
-(ns nomis-three-tier-service-example-clj.system.main
+(ns nomis-movies.system.main
   (:require
-   [nomis-three-tier-service-example-clj.system.system :as system]
+   [nomis-movies.system.system :as system]
    [taoensso.timbre :as timbre])
   (:gen-class))
 

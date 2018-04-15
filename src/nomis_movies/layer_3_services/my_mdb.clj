@@ -1,4 +1,4 @@
-(ns nomis-three-tier-service-example-clj.layer-3-services.my-mdb
+(ns nomis-movies.layer-3-services.my-mdb
   (:require
    [clj-http.client :as http-client]))
 

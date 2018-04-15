@@ -1,4 +1,4 @@
-(ns nomis-three-tier-service-example-clj.domain-schemas.schemas
+(ns nomis-movies.domain-schemas.schemas
   (:require
    [schema.core :as s]))
 

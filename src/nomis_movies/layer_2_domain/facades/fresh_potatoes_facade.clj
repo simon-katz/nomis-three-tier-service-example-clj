@@ -1,8 +1,8 @@
-(ns nomis-three-tier-service-example-clj.layer-2-domain.facades.fresh-potatoes-facade
+(ns nomis-movies.layer-2-domain.facades.fresh-potatoes-facade
   (:require
    [clojure.set :as set]
-   [nomis-three-tier-service-example-clj.domain-schemas.schemas :as schemas]
-   [nomis-three-tier-service-example-clj.layer-3-services.fresh-potatoes
+   [nomis-movies.domain-schemas.schemas :as schemas]
+   [nomis-movies.layer-3-services.fresh-potatoes
     :as fresh-potatoes-service]
    [schema.core :as s]))
 

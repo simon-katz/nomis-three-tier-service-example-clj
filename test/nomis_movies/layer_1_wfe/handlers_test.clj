@@ -1,9 +1,9 @@
-(ns nomis-three-tier-service-example-clj.layer-1-wfe.handlers-test
+(ns nomis-movies.layer-1-wfe.handlers-test
   (:require
    [cheshire.core :as cheshire]
    [clj-http.client :as http-client]
    [midje.sweet :refer :all]
-   [nomis-three-tier-service-example-clj.layer-1-wfe.handlers :as sut]
+   [nomis-movies.layer-1-wfe.handlers :as sut]
    [ring.mock.request :as mock]))
 
 (defn parse-body [body]

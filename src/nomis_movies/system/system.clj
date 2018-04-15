@@ -1,7 +1,7 @@
-(ns nomis-three-tier-service-example-clj.system.system
+(ns nomis-movies.system.system
   (:require
-   [nomis-three-tier-service-example-clj.layer-1-wfe.handlers :as handlers]
-   [nomis-three-tier-service-example-clj.layer-1-wfe.server :as server]
+   [nomis-movies.layer-1-wfe.handlers :as handlers]
+   [nomis-movies.layer-1-wfe.server :as server]
    [taoensso.timbre :as timbre]))
 
 (defn make-system [config]

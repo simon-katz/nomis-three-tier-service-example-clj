@@ -1,4 +1,4 @@
-(ns nomis-three-tier-service-example-clj.layer-3-services.fresh-potatoes
+(ns nomis-movies.layer-3-services.fresh-potatoes
   (:require
    [clj-http.client :as http-client]))
 
