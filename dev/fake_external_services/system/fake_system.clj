@@ -8,10 +8,6 @@
 
 ;;;; ___________________________________________________________________________
 
-;;;; TODO Use integrant.
-
-;;;; ___________________________________________________________________________
-
 (defn ^:private start-fake-fresh-potatoes-webserver [system]
   (timbre/info "Starting fake-fresh-potatoes-webserver")
   (assert (nil? (:fake-fresh-potatoes-webserver-info system)))
