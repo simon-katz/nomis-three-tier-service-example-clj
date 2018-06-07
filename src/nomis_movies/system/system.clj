@@ -6,7 +6,7 @@
 ;;;; ___________________________________________________________________________
 
 ;;;; TODO Use integrant. Or maybe component (for which see nomisdraw.)
-;;;;      Also in `fake-external-services.system.fake-system`.
+;;;;      Also in `fake-external-services.system.system-for-fake-services`.
 
 ;;;; ___________________________________________________________________________
 

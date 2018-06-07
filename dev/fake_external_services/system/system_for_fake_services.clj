@@ -1,4 +1,4 @@
-(ns fake-external-services.system.fake-system
+(ns fake-external-services.system.system-for-fake-services
   (:require [fake-external-services.layer-1-wfe.fake-fresh-potatoes-handler
              :as fake-fresh-potatoes-handler]
             [fake-external-services.layer-1-wfe.fake-my-mdb-handler
