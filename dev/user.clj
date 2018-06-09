@@ -7,7 +7,7 @@
             [clojure.string :as str]
             [clojure.tools.namespace.move :refer :all]
             [clojure.tools.namespace.repl :refer :all]
-            [fake-external-services.system.system-for-fake-services :as fake-system]
+            [fake-external-services.system.system-for-fake-services :as fake-services]
             [midje.repl :refer :all]
             [nomis-movies.layer-2-domain.movies :as movies]
             [nomis-movies.system.main :as main]
@@ -40,7 +40,7 @@
 (defn start
   "Starts the current development system."
   [& {:keys [fakes-only?]}]
-  (alter-var-root #'the-system fake-system/start)
+  (alter-var-root #'the-system fake-services/start)
   (when-not fakes-only?
     (alter-var-root #'the-system system/start))
   the-system)
@@ -48,7 +48,7 @@
 (defn stop
   "Shuts down and destroys the current development system."
   []
-  (alter-var-root #'the-system fake-system/stop)
+  (alter-var-root #'the-system fake-services/stop)
   (alter-var-root #'the-system system/stop))
 
 (defn go
