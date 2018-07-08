@@ -27,7 +27,7 @@
 
 ;;;; ___________________________________________________________________________
 
-(defn ^:private start-fake-my-mdb-webserver [system]  
+(defn ^:private start-fake-my-mdb-webserver [system]
   (timbre/info "Starting fake-my-mdb-webserver")
   (assert (nil? (:fake-my-mdb-webserver-info system)))
   (let [config (:config system)]

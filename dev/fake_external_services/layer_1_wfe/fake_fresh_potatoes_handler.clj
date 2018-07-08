@@ -7,7 +7,7 @@
 
    (c/GET "/favicon.ico" [] ; avoid errors when playing with API in a browser
      (rur/ok nil))
-   
+
    (c/context "/api" []
      (c/GET "/fresh-potatoes-movies" []
        :summary "Provide list of all movies"

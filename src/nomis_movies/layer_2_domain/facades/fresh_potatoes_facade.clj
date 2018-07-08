@@ -12,4 +12,3 @@
   (->> (fresh-potatoes-service/get-movies config)
        (map fresh-potatoes-movie->movie)
        (s/validate [schemas/Movie])))
-
