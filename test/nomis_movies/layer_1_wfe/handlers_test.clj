@@ -22,16 +22,15 @@
   (let [config   {:fresh-potatoes-service {:port 1001}
                   :my-mdb-service {:port 1002}}
         handler  (sut/make-handler config)
-        response (handler (mock/request :get "/api/movies"))
-        body     (parse-body (:body response))]
-    [(:status response)
-     body])
+        response (handler (mock/request :get "/api/movies"))]
+    (update response :body parse-body))
   =>
-  [200
-   [{:title "Movie C"}
-    {:title "Movie B"}
-    {:title "Movie D"}
-    {:title "Movie A"}]]
+  (contains {:status 200
+             :headers (contains {"Content-Type" "application/json; charset=utf-8"})
+             :body [{:title "Movie C"}
+                    {:title "Movie B"}
+                    {:title "Movie D"}
+                    {:title "Movie A"}]})
   (provided (http-client/get "http://localhost:1001/api/fresh-potatoes-movies"
                              {:as :json})
             => {:body [{:name "Movie C"}
@@ -45,16 +44,15 @@
   (let [config   {:fresh-potatoes-service {:port 1001}
                   :my-mdb-service {:port 1002}}
         handler  (sut/make-handler config)
-        response (handler (mock/request :get "/api/movies-in-alphabetical-order"))
-        body     (parse-body (:body response))]
-    [(:status response)
-     body])
+        response (handler (mock/request :get "/api/movies-in-alphabetical-order"))]
+    (update response :body parse-body))
   =>
-  [200
-   [{:title "Movie A"}
-    {:title "Movie B"}
-    {:title "Movie C"}
-    {:title "Movie D"}]]
+  (contains {:status 200
+             :headers (contains {"Content-Type" "application/json; charset=utf-8"})
+             :body [{:title "Movie A"}
+                    {:title "Movie B"}
+                    {:title "Movie C"}
+                    {:title "Movie D"}]})
   (provided (http-client/get "http://localhost:1001/api/fresh-potatoes-movies"
                              {:as :json})
             => {:body [{:name "Movie C"}
