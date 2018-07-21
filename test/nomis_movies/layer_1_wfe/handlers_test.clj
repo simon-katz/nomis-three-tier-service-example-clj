@@ -8,7 +8,17 @@
 (defn parse-body [body]
   (cheshire/parse-string (slurp body) true))
 
-(fact "Test GET request to /api/movies returns expected response"
+(fact "GET request to /favicon.ico returns expected response"
+  (let [config   {}
+        handler  (sut/make-handler config)
+        response (handler (mock/request :get "/favicon.ico"))]
+    response)
+  =>
+  {:status 200
+   :headers {}
+   :body nil})
+
+(fact "GET request to /api/movies returns expected response"
   (let [config   {:fresh-potatoes-service {:port 1001}
                   :my-mdb-service {:port 1002}}
         handler  (sut/make-handler config)
@@ -31,7 +41,7 @@
             => {:body [{:moniker "Movie D"}
                        {:moniker "Movie A"}]}))
 
-(fact "Test GET request to /api/movies-in-alphabetical-order returns expected response"
+(fact "GET request to /api/movies-in-alphabetical-order returns expected response"
   (let [config   {:fresh-potatoes-service {:port 1001}
                   :my-mdb-service {:port 1002}}
         handler  (sut/make-handler config)
