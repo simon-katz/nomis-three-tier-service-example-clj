@@ -9,6 +9,7 @@
             [clojure.tools.namespace.repl :refer :all]
             [fake-external-services.system.system-for-fake-services :as fake-services]
             [midje.repl :refer :all]
+            [nomis-clj-repl-tools :refer :all]
             [nomis-movies.layer-2-domain.movies :as movies]
             [nomis-movies.system.main :as main]
             [nomis-movies.system.system :as system]))

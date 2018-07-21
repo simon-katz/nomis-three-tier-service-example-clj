@@ -13,8 +13,9 @@
   :repl-options {:init-ns user}
   :target-path "target/%s"
   :profiles {:dev {:source-paths ["dev"]
-                   :dependencies [[org.clojure/tools.namespace "0.2.11"]
-                                  [midje "1.9.1"]
+                   :dependencies [[midje "1.9.1"
+                                   :exclusions [org.clojure/clojure]]
+                                  [nomis-clj-repl-tools "0.1.2"]
                                   [ring/ring-mock "0.3.2"]]
                    :plugins [[lein-midje "3.2.1"]]}
              :uberjar {:aot :all}})
