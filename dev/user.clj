@@ -10,7 +10,7 @@
             [fake-external-services.system.system-for-fake-services :as fake-services]
             [midje.repl :refer :all]
             [nomis-clj-repl-tools :refer :all]
-            [nomis-movies.layer-2-domain.movies :as movies]
+            [nomis-movies.layer-2-domain.domain-api :as domain-api]
             [nomis-movies.system.main :as main]
             [nomis-movies.system.system :as system]))
 
@@ -99,5 +99,5 @@
                    {:as :json}))
 
 (defn get-movies-via-domain []
-  (movies/get-movies @#'main/config
-                     {}))
+  (domain-api/get-movies @#'main/config
+                         {}))

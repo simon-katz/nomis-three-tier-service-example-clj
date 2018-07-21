@@ -1,7 +1,7 @@
 (ns nomis-movies.layer-1-wfe.handlers
   (:require [compojure.api.sweet :as c]
             [nomis-movies.domain-schemas.schemas :as schemas]
-            [nomis-movies.layer-2-domain.movies :as movies]
+            [nomis-movies.layer-2-domain.domain-api :as domain-api]
             [ring.util.http-response :as rur]))
 
 ;;;; ___________________________________________________________________________
@@ -30,11 +30,11 @@
      (c/GET "/movies" []
        :return [schemas/Movie]
        :summary "Provide list of all movies"
-       (rur/ok (movies/get-movies config
-                                  {})))
+       (rur/ok (domain-api/get-movies config
+                                      {})))
 
      (c/GET "/movies-in-alphabetical-order" []
        :return [schemas/Movie]
        :summary "Provide list of all movies in alphabetical order"
-       (rur/ok (movies/get-movies config
-                                  {:sort? true}))))))
+       (rur/ok (domain-api/get-movies config
+                                      {:sort? true}))))))

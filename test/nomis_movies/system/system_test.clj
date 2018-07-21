@@ -1,7 +1,7 @@
 (ns nomis-movies.system.system-test
   (:require [clj-http.client :as http-client]
             [midje.sweet :refer :all]
-            [nomis-movies.layer-2-domain.movies :as movies]
+            [nomis-movies.layer-2-domain.domain-api :as domain-api]
             [nomis-movies.system.system :as sut]
             [taoensso.timbre :as timbre]))
 
@@ -39,7 +39,7 @@
         {:status 200
          :body [{:title "Movie A"}
                 {:title "Movie B"}]})
-    (provided (movies/get-movies test-config
-                                 {})
+    (provided (domain-api/get-movies test-config
+                                     {})
               => [{:title "Movie A"}
                   {:title "Movie B"}])))
