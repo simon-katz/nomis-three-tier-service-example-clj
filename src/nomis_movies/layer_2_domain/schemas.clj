@@ -1,4 +1,4 @@
-(ns nomis-movies.domain-schemas.schemas
+(ns nomis-movies.layer-2-domain.schemas
   (:require [schema.core :as s]))
 
 (s/defschema Movie

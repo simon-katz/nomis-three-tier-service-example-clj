@@ -1,6 +1,6 @@
 (ns nomis-movies.layer-2-domain.movies
   (:require [clojure.set :as set]
-            [nomis-movies.domain-schemas.schemas :as schemas]
+            [nomis-movies.layer-2-domain.schemas :as schemas]
             [schema.core :as s]))
 
 (defn ^:private canonicalize-fresh-potatoes-movie [x]
