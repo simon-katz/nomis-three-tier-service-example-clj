@@ -5,28 +5,24 @@
              :as fresh-potatoes-service]
             [nomis-movies.layer-3-services.my-mdb :as my-mdb-service]))
 
-(fact "`get-movies` combines movies from fresh-potatoes and my-mdb"
-  (sut/get-movies ..config..)
+(fact "`sut/combine-raw-movie-seqs` combines fresh-potatoes and my-mdb movies"
+  (#'sut/combine-raw-movie-seqs {}
+                                [{:name "C"}
+                                 {:name "B"}]
+                                [{:moniker "D"}
+                                 {:moniker "A"}])
   => [{:title "C"}
       {:title "B"}
       {:title "D"}
-      {:title "A"}]
-  (provided (fresh-potatoes-service/get-movies ..config..)
-            => [{:name "C"}
-                {:name "B"}]
-            (my-mdb-service/get-movies ..config..)
-            => [{:moniker "D"}
-                {:moniker "A"}]))
+      {:title "A"}])
 
-(fact "`get-movies-in-alphabetical-order` combines and sorts movies from fresh-potatoes and my-mdb"
-  (sut/get-movies-in-alphabetical-order ..config..)
+(fact "`sut/combine-raw-movie-seqs` sorts the result when requested"
+  (#'sut/combine-raw-movie-seqs {:sort? true}
+                                [{:name "C"}
+                                 {:name "B"}]
+                                [{:moniker "D"}
+                                 {:moniker "A"}])
   => [{:title "A"}
       {:title "B"}
       {:title "C"}
-      {:title "D"}]
-  (provided (fresh-potatoes-service/get-movies ..config..)
-            => [{:name "C"}
-                {:name "B"}]
-            (my-mdb-service/get-movies ..config..)
-            => [{:moniker "D"}
-                {:moniker "A"}]))
+      {:title "D"}])

@@ -98,4 +98,5 @@
                    {:as :json}))
 
 (defn get-movies-via-domain []
-  (movies/get-movies @#'main/config))
+  (movies/get-movies @#'main/config
+                     {}))
