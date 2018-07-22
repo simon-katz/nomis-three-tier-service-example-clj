@@ -12,8 +12,8 @@
        (s/validate schemas/Movie)))
 
 (defn combine-raw-movie-seqs [{:keys [sort?] :as opts}
-                                        raw-fresh-potatoes-movies
-                                        raw-my-mdb-movies]
+                              raw-fresh-potatoes-movies
+                              raw-my-mdb-movies]
   (let [movies (concat (map canonicalize-fresh-potatoes-movie
                             raw-fresh-potatoes-movies)
                        (map canonicalize-my-mdb-movie
