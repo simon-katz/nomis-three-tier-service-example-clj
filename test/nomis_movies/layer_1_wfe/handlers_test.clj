@@ -31,14 +31,15 @@
                     {:title "Movie B"}
                     {:title "Movie D"}
                     {:title "Movie A"}]})
-  (provided (http-client/get "http://localhost:1001/api/fresh-potatoes-movies"
-                             {:as :json})
-            => {:body [{:name "Movie C"}
-                       {:name "Movie B"}]}
-            (http-client/get "http://localhost:1002/api/my-mdb-movies"
-                             {:as :json})
-            => {:body [{:moniker "Movie D"}
-                       {:moniker "Movie A"}]}))
+  (provided
+    (http-client/get "http://localhost:1001/api/fresh-potatoes-movies"
+                     {:as :json})
+    => {:body [{:name "Movie C"}
+               {:name "Movie B"}]}
+    (http-client/get "http://localhost:1002/api/my-mdb-movies"
+                     {:as :json})
+    => {:body [{:moniker "Movie D"}
+               {:moniker "Movie A"}]}))
 
 (fact "GET request to /api/movies-in-alphabetical-order returns expected response"
   (let [config   {:fresh-potatoes-service {:port 1001}
@@ -53,11 +54,12 @@
                     {:title "Movie B"}
                     {:title "Movie C"}
                     {:title "Movie D"}]})
-  (provided (http-client/get "http://localhost:1001/api/fresh-potatoes-movies"
-                             {:as :json})
-            => {:body [{:name "Movie C"}
-                       {:name "Movie B"}]}
-            (http-client/get "http://localhost:1002/api/my-mdb-movies"
-                             {:as :json})
-            => {:body [{:moniker "Movie D"}
-                       {:moniker "Movie A"}]}))
+  (provided
+    (http-client/get "http://localhost:1001/api/fresh-potatoes-movies"
+                     {:as :json})
+    => {:body [{:name "Movie C"}
+               {:name "Movie B"}]}
+    (http-client/get "http://localhost:1002/api/my-mdb-movies"
+                     {:as :json})
+    => {:body [{:moniker "Movie D"}
+               {:moniker "Movie A"}]}))

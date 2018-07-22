@@ -39,7 +39,8 @@
         {:status 200
          :body [{:title "Movie A"}
                 {:title "Movie B"}]})
-    (provided (domain-api/get-movies test-config
-                                     {})
-              => [{:title "Movie A"}
-                  {:title "Movie B"}])))
+    (provided
+      (domain-api/get-movies test-config
+                             {})
+      => [{:title "Movie A"}
+          {:title "Movie B"}])))
