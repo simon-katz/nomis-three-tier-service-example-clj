@@ -15,7 +15,6 @@
   :profiles {:dev {:source-paths ["dev"]
                    :dependencies [[midje "1.9.1"
                                    :exclusions [org.clojure/clojure]]
-                                  [nomis-clj-repl-tools "0.1.2"]
                                   [ring/ring-mock "0.3.2"]]
                    :plugins [[lein-midje "3.2.1"]]}
              :uberjar {:aot :all}})
